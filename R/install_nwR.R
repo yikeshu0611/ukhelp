@@ -55,7 +55,6 @@ install_ukR <- function(){
     if ('..ukRiswait' %in% ls(all.names = T,envir = .GlobalEnv)){
         if (..ukRiswait){
             rstudioapi::sendToConsole('.rs.restartR()')
-            message('认证成功，可以使用ukR包了')
         }
     }
 
