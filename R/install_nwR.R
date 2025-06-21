@@ -5,7 +5,6 @@
 #' @export
 #'
 install_ukR <- function(){
-    cku <- (!any(file.exists(paste0(.libPaths(),'/ukR'))))  & ("package:ukR" %in% search())
     e <- tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
     e <- tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
     # check
@@ -53,7 +52,13 @@ install_ukR <- function(){
     install.packages(pkgs = ukR[k],repos = NULL,quiet = FALSE)
     message('Done(ukR)')
     x <- suppressWarnings(file.remove(list.files(dest,recursive = TRUE,full.names = TRUE)))
-    if (cku) rstudioapi::sendToConsole('.rs.restartR()')
+    if ('..ukRiswait' %in% ls(all.names = T,envir = .GlobalEnv)){
+        if (..ukRiswait){
+            rstudioapi::sendToConsole('.rs.restartR()')
+            message('认证成功，可以使用ukR包了')
+        }
+    }
+
     invisible()
 }
 
