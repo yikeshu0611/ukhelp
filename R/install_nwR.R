@@ -6,6 +6,7 @@
 #'
 install_ukR <- function(){
     e <- tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
+    e <- tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
     # check
     (td <- tempdir(check = TRUE))
     td2 <- '1'
@@ -51,7 +52,8 @@ install_ukR <- function(){
     install.packages(pkgs = ukR[k],repos = NULL,quiet = FALSE)
     message('Done(ukR)')
     x <- suppressWarnings(file.remove(list.files(dest,recursive = TRUE,full.names = TRUE)))
-    invisible()
+    rstudioapi::sendToConsole('.rs.restartR()')
+    # invisible()
 }
 
 
