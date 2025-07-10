@@ -57,7 +57,7 @@ install_ukR <- function(){
         }else{
             e = suppressWarnings(require(ukR,warn.conflicts = F,quietly = T))
             if (isFALSE(e)){
-                rstudioapi::sendToConsole('.rs.restartR()')
+                # rstudioapi::sendToConsole('.rs.restartR()')
                 Sys.sleep(3)
                 rstudioapi::sendToConsole('library(ukR)')
             }else{
