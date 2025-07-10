@@ -54,20 +54,10 @@ install_ukR <- function(){
     if ('..ukRiswait' %in% ls(all.names = T,envir = .GlobalEnv)){
         if (..ukRiswait){
             rstudioapi::sendToConsole('.rs.restartR()')
-        }else{
-            e = suppressWarnings(require(ukR,warn.conflicts = F,quietly = T))
-            if (isFALSE(e)){
-                # rstudioapi::sendToConsole('.rs.restartR()')
-                Sys.sleep(3)
-                rstudioapi::sendToConsole('library(ukR)')
-            }else{
-                e <- tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
-                rstudioapi::sendToConsole('library(ukR)')
-            }
         }
-    }else{
-        rstudioapi::sendToConsole('library(ukR)')
     }
+    rstudioapi::sendToConsole('library(ukR)')
+    
 
     invisible()
 }
