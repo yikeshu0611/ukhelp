@@ -5,7 +5,7 @@
 #' @export
 #'
 install_ukR <- function(){
-
+.rs.restartR()
 x = tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
 unloadNamespace("ukR")
 x=capture.output(suppressMessages(remove.packages("ukR")))
@@ -51,7 +51,7 @@ x=capture.output(suppressMessages(remove.packages("ukR")))
     (desc <- paste0(main,'/ukR'))
     ukhelp:::check_package(desc)
 
-    install.packages(pkgs = ukR[k],repos = NULL,quiet = FALSE)
+    install.packages(pkgs = ukR[k],repos = NULL,quiet = FALSE, type = "source")
     x <- suppressWarnings(file.remove(list.files(dest,recursive = TRUE,full.names = TRUE)))
     
 
