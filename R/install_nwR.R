@@ -5,7 +5,6 @@
 #' @export
 #'
 install_ukR <- function(){
-.rs.restartR()
 x = tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
 unloadNamespace("ukR")
 x=capture.output(suppressMessages(remove.packages("ukR")))
