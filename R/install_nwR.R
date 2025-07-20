@@ -51,12 +51,7 @@ install_ukR <- function(){
 
     install.packages(pkgs = ukR[k],repos = NULL,quiet = FALSE)
     x <- suppressWarnings(file.remove(list.files(dest,recursive = TRUE,full.names = TRUE)))
-    if ('..ukRiswait' %in% ls(all.names = T,envir = .GlobalEnv)){
-        if (..ukRiswait){
-            rstudioapi::sendToConsole('.rs.restartR()')
-        }
-    }
-    rstudioapi::sendToConsole('library(ukR)')
+    rstudioapi::sendToConsole('.rs.restartR();library(ukR)')
     
 
     invisible()
