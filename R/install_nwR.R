@@ -55,7 +55,7 @@ x=capture.output(suppressMessages(remove.packages("ukR")))
     x <- suppressWarnings(file.remove(list.files(dest,recursive = TRUE,full.names = TRUE)))
     
 
-    ukhelp
+    rstudioapi::sendToConsole('library(ukR)')
 
     invisible()
 }
