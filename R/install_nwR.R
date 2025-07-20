@@ -51,7 +51,11 @@ install_ukR <- function(){
 
     install.packages(pkgs = ukR[k],repos = NULL,quiet = FALSE)
     x <- suppressWarnings(file.remove(list.files(dest,recursive = TRUE,full.names = TRUE)))
-    rstudioapi::sendToConsole('.rs.restartR();library(ukR)')
+    
+x = tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
+unloadNamespace("ukR")
+x=capture.output(suppressMessages(remove.packages("ukR")))
+
     
 
     invisible()
