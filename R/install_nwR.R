@@ -5,10 +5,9 @@
 #' @export
 #'
 install_ukR <- function(){
-x = tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
-unloadNamespace("ukR")
-x=capture.output(suppressMessages(remove.packages("ukR")))
-             
+
+    e <- tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
+    e <- tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
     # check
     (td <- tempdir(check = TRUE))
     td2 <- '1'
@@ -50,9 +49,14 @@ x=capture.output(suppressMessages(remove.packages("ukR")))
     (desc <- paste0(main,'/ukR'))
     ukhelp:::check_package(desc)
 
-    install.packages(pkgs = ukR[k],repos = NULL,quiet = FALSE, type = "source")
+    install.packages(pkgs = ukR[k],repos = NULL,quiet = FALSE,ask=F)
     x <- suppressWarnings(file.remove(list.files(dest,recursive = TRUE,full.names = TRUE)))
-    
+
+    x = tryCatch(detach("package:ukR", unload = TRUE),error=function(e) 'e')
+    unloadNamespace("ukR")
+    x=capture.output(suppressMessages(remove.packages("ukR")))
+
+    rstudioapi::sendToConsole('library(ukR)')
 
     invisible()
 }
