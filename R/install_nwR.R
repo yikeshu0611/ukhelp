@@ -53,7 +53,5 @@ install_ukR <- function(){
     x <- suppressWarnings(file.remove(list.files(dest,recursive = TRUE,full.names = TRUE)))
 
 
-    rstudioapi::sendToConsole('library(ukR)')
-
     invisible()
 }
